@@ -1,7 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
-const path = require('path');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,6 +10,15 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
+
+// Configure Nodemailer transporter using Gmail SMTP
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER, // your gmail address
+    pass: process.env.EMAIL_PASS, // your gmail app password
+  }
+});
 
 // GET /products
 app.get('/products', (req, res) => {
@@ -116,7 +126,34 @@ app.patch('/orders/:id/confirm', (req, res) => {
     fs.writeFile('./data/orders.json', JSON.stringify(orders, null, 2), err => {
       if (err) return res.status(500).json({ message: 'Error updating order status' });
 
-      res.json({ message: 'Payment confirmed', order: orders[index] });
+      const order = orders[index];
+
+      // Send notification email
+      const mailOptions = {
+        from: `"Bintuu Signatures" <${process.env.EMAIL_USER}>`,
+        to: process.env.ADMIN_EMAIL,
+        subject: `Payment Confirmed for Order #${order.id}`,
+        html: `
+          <h2>Payment Confirmed</h2>
+          <p><strong>Order ID:</strong> ${order.id}</p>
+          <p><strong>Name:</strong> ${order.name}</p>
+          <p><strong>Product:</strong> ${order.product}</p>
+          <p><strong>Quantity:</strong> ${order.quantity}</p>
+          <p><strong>Payment Method:</strong> ${order.payment}</p>
+          <p><strong>Delivery Address:</strong> ${order.address}</p>
+          <p><strong>Date:</strong> ${order.date}</p>
+        `
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error('Error sending payment confirmation email:', error);
+        } else {
+          console.log('Payment confirmation email sent:', info.response);
+        }
+      });
+
+      res.json({ message: 'Payment confirmed', order });
     });
   });
 });

@@ -66,7 +66,8 @@
     "payment": "Bank Transfer",
     "notes": "",
     "id": 6,
-    "date": "2025-06-22T17:13:22.395Z"
+    "date": "2025-06-22T17:13:22.395Z",
+    "status": "confirmed"
   },
   {
     "name": "Yusra Ishag",
@@ -79,7 +80,8 @@
     "payment": "Bank Transfer",
     "notes": "",
     "id": 7,
-    "date": "2025-06-22T21:00:13.152Z"
+    "date": "2025-06-22T21:00:13.152Z",
+    "status": "confirmed"
   },
   {
     "name": "Yusra Ishag",
@@ -92,7 +94,8 @@
     "payment": "Bank Transfer",
     "notes": "",
     "id": 8,
-    "date": "2025-06-22T22:40:54.952Z"
+    "date": "2025-06-22T22:40:54.952Z",
+    "status": "confirmed"
   },
   {
     "name": "Aisha",
@@ -105,7 +108,8 @@
     "payment": "Bank Transfer",
     "notes": "",
     "id": 9,
-    "date": "2025-06-22T22:59:05.123Z"
+    "date": "2025-06-22T22:59:05.123Z",
+    "status": "confirmed"
   },
   {
     "name": "temitope",
@@ -118,7 +122,8 @@
     "payment": "Bank Transfer",
     "notes": "",
     "id": 10,
-    "date": "2025-06-23T08:39:50.928Z"
+    "date": "2025-06-23T08:39:50.928Z",
+    "status": "confirmed"
   },
   {
     "name": "Yusra Ishag",
@@ -172,6 +177,34 @@
     "notes": "",
     "id": 14,
     "date": "6/23/2025, 10:42:56 AM",
+    "status": "confirmed"
+  },
+  {
+    "name": "fathia",
+    "phone": "0906234532",
+    "email": "vivian@gmail.com",
+    "address": "lokohoma",
+    "product": "Emerald Pearl Necklace",
+    "quantity": 1,
+    "size": "",
+    "payment": "Bank Transfer",
+    "notes": "",
+    "id": 15,
+    "date": "2025-07-04T16:27:34.106Z",
+    "status": "confirmed"
+  },
+  {
+    "name": "Bintu",
+    "phone": "0814467365",
+    "email": "bintu@gmail.com",
+    "address": "asokoro",
+    "product": "Premium Jersey Hijab",
+    "quantity": 4,
+    "size": "",
+    "payment": "Bank Transfer",
+    "notes": "",
+    "id": 16,
+    "date": "2025-07-04T17:42:00.715Z",
     "status": "confirmed"
   }
 ]
